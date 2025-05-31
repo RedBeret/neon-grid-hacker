@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://RedBeret.github.io/neon-grid-hacker/",
+  "homepage": "https://redberet.github.io/neon-grid-hacker/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
