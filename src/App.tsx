@@ -26,8 +26,8 @@ const App = () => (
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          {/* Set basename for BrowserRouter for GitHub Pages deployment */}
-          <BrowserRouter basename={"/neon-grid-hacker"}>
+          {/* Simple BrowserRouter without GitHub Pages specific basename */}
+          <BrowserRouter>
             {/* Add Suspense for lazy loading routes */}
             <Suspense fallback={<div>Loading...</div>}>
               <Routes>
