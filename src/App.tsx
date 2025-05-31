@@ -1,17 +1,17 @@
-
+import React, { Suspense, lazy } from 'react'; // Added Suspense and lazy
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// Pages
-import Index from "./pages/Index";
-import Play from "./pages/Play";
-import Leaderboard from "./pages/Leaderboard";
-import Settings from "./pages/Settings";
-import Credits from "./pages/Credits";
-import NotFound from "./pages/NotFound";
+// Dynamically import pages
+const Index = lazy(() => import("./pages/Index"));
+const Play = lazy(() => import("./pages/Play"));
+const Leaderboard = lazy(() => import("./pages/Leaderboard"));
+const Settings = lazy(() => import("./pages/Settings"));
+const Credits = lazy(() => import("./pages/Credits"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Providers
 import { GameProvider } from "./context/GameContext";
@@ -27,14 +27,17 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/play" element={<Play />} />
-              <Route path="/leaderboard" element={<Leaderboard />} />
-              <Route path="/settings" element={<Settings />} />
-              <Route path="/credits" element={<Credits />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            {/* Add Suspense for lazy loading routes */}
+            <Suspense fallback={<div>Loading...</div>}> 
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/play" element={<Play />} />
+                <Route path="/leaderboard" element={<Leaderboard />} />
+                <Route path="/settings" element={<Settings />} />
+                <Route path="/credits" element={<Credits />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
           </BrowserRouter>
         </TooltipProvider>
       </AudioProvider>
