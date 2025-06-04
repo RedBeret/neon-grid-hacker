@@ -95,3 +95,6 @@ This project is configured for deployment to GitHub Pages.
 
 5.  **Configure GitHub Pages:**
     In your GitHub repository settings, under "Pages", ensure the source is set to deploy from the `gh-pages` branch (or the branch `gh-pages` pushes to, usually `gh-pages`).
+
+Once this setup is complete, every push to `main` triggers the included GitHub Actions workflow which builds and publishes your site automatically.
+
