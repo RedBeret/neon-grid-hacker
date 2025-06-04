@@ -47,14 +47,21 @@ const GameGrid: React.FC<GridProps> = ({ onNodeClick }) => {
     }
     
     // Adjust appearance based on solved state
-    const solvedStyle = node.solved 
-      ? 'opacity-50' 
+    const solvedStyle = node.solved
+      ? 'opacity-50'
       : 'border-glow-' + node.color;
+
+    // Highlight the node the player is currently on
+    const isActive =
+      state.player.x === node.x && state.player.y === node.y;
+    const activeStyle = isActive
+      ? 'animate-pulse-glow ring-2 ring-cyber-cyan/70'
+      : '';
     
     return (
       <button
         key={node.id}
-        className={`absolute w-12 h-6 ${baseColor} ${solvedStyle} transform rotate-45 cursor-cyber transition-all duration-300 hover:scale-105`}
+        className={`absolute w-12 h-6 ${baseColor} ${solvedStyle} ${activeStyle} transform rotate-45 cursor-cyber transition-all duration-300 hover:scale-105`}
         style={{ 
           left: `${x}px`, 
           top: `${y}px`,
@@ -93,11 +100,11 @@ const GameGrid: React.FC<GridProps> = ({ onNodeClick }) => {
   // Memoize grid rendering for performance
   const gridNodes = useMemo(() => {
     if (!grid || grid.length === 0) return null;
-    
-    return grid.flatMap((row) => 
+
+    return grid.flatMap((row) =>
       row.map((node) => renderNode(node))
     );
-  }, [grid, state.status]);
+  }, [grid, state.status, state.player]);
   
   return (
     <div className="relative w-full h-[60vh] overflow-hidden">
