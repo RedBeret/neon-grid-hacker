@@ -50,7 +50,7 @@ type GameAction =
   | { type: 'RESET_IDLE_TIME' };
 
 // Initial state
-const initialState: GameState = {
+export const initialState: GameState = {
   status: 'idle',
   difficulty: 'easy',
   timeRemaining: 90, // 90 seconds
@@ -116,7 +116,7 @@ const generateGrid = (difficulty: Difficulty): Node[][] => {
 };
 
 // Reducer
-const gameReducer = (state: GameState, action: GameAction): GameState => {
+export const gameReducer = (state: GameState, action: GameAction): GameState => {
   switch (action.type) {
     case 'START_GAME':
       return {
@@ -129,6 +129,7 @@ const gameReducer = (state: GameState, action: GameAction): GameState => {
           x: 0,
           y: 0,
         },
+        highScore: state.highScore,
       };
       
     case 'PAUSE_GAME':
