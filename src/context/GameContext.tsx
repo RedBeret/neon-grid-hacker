@@ -39,6 +39,7 @@ type GameAction =
   | { type: 'PAUSE_GAME' }
   | { type: 'RESUME_GAME' }
   | { type: 'END_GAME' }
+  | { type: 'SET_HIGH_SCORE'; highScore: number }
   | { type: 'MOVE_PLAYER'; x: number; y: number }
   | { type: 'SOLVE_NODE'; x: number; y: number }
   | { type: 'UPDATE_TIME'; delta: number }
@@ -148,6 +149,13 @@ const gameReducer = (state: GameState, action: GameAction): GameState => {
         ...state,
         status: 'gameOver',
         highScore: newHighScore,
+      };
+    }
+
+    case 'SET_HIGH_SCORE': {
+      return {
+        ...state,
+        highScore: action.highScore,
       };
     }
     
@@ -297,7 +305,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (savedHighScore) {
       const highScore = parseInt(savedHighScore, 10);
       if (!isNaN(highScore) && highScore > 0) {
-        dispatch({ type: 'END_GAME' }); // This updates the high score
+        dispatch({ type: 'SET_HIGH_SCORE', highScore });
       }
     }
   }, []);
