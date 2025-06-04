@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/neon-grid-hacker/', // Set the base path for GitHub Pages
+  base: mode === 'production' ? '/neon-grid-hacker/' : '/',
   server: {
     host: "::",
     port: 8080,
