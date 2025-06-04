@@ -41,7 +41,7 @@ To get started with development:
     bun dev
     ```
 
-This will start the development server, typically on `http://localhost:5173`.
+This will start the development server, typically on `http://localhost:8080`.
 
 ## Available Scripts
 
