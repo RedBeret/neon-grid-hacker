@@ -124,6 +124,7 @@ const gameReducer = (state: GameState, action: GameAction): GameState => {
         status: 'playing',
         difficulty: action.difficulty,
         grid: generateGrid(action.difficulty),
+        highScore: state.highScore,
         player: {
           ...initialState.player,
           x: 0,
