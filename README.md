@@ -51,6 +51,7 @@ In the project directory, you can run:
 - `npm run build` or `bun build`: Builds the app for production to the `dist` folder.
 - `npm run lint` or `bun lint`: Lints the project files using ESLint.
 - `npm run preview` or `bun preview`: Serves the production build locally for preview.
+- `npm test` or `bun test`: Runs the unit tests using Vitest.
 
 ## Deploying to GitHub Pages
 
