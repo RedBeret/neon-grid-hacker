@@ -47,8 +47,7 @@ const GameControls: React.FC = () => {
         if (state.player.canDash) {
           dispatch({ type: 'DASH' });
           playSfx('dash');
-          // Dash moves the player 2 cells in the current direction
-          // For simplicity, we'll just move 2 cells in a random valid direction
+          // Dash moves the player two cells in a randomly chosen valid direction
           const directions = [
             { x: 0, y: -1 }, // Up
             { x: -1, y: 0 }, // Left
